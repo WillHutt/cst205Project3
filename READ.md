@@ -1,0 +1,1 @@
+using PIL, tesseract, Flask
