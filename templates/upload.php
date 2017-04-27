@@ -37,7 +37,7 @@ if ($uploadOk == 0) {
     echo " Sorry, your file was not uploaded.";
 // if everything is ok, try to upload file
 } else {
-    $newfilename = "helloworld.jpg";
+    $newfilename = $target_dir . "helloworld.jpg";
     if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"],  $newfilename)) {
         echo " The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
     } else {
