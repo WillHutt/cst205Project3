@@ -10,7 +10,7 @@ if(isset($_FILES['files'])){
         if($file_size > 2097152){
 			$errors[]='File size must be less than 2 MB';
         }		
-        $query="INSERT into pictures/ ('USER_ID','FILE_NAME','FILE_SIZE','FILE_TYPE') VALUES('$user_id','$file_name','$file_size','$file_type'); ";
+        //$query="INSERT into pictures/ ('USER_ID','FILE_NAME','FILE_SIZE','FILE_TYPE') VALUES('$user_id','$file_name','$file_size','$file_type'); ";
         $desired_dir="pictures/";
         if(empty($errors)==true){
             if(is_dir($desired_dir)==false){

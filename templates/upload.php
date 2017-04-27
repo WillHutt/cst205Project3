@@ -1,4 +1,4 @@
-<!-- Allows only 1 image upload at a time. Will not be used -->
+<!-- Allows only 1 image upload at a time. Might not be used -->
 
 <?php
 $target_dir = "pictures/";
@@ -18,7 +18,7 @@ if(isset($_POST["submit"])) {
 }
 // Check if file already exists
 if (file_exists($target_file)) {
-    echo "Sorry, file already exists.";
+    echo " Sorry, file already exists.";
     $uploadOk = 0;
 }
 // Check file size
@@ -34,13 +34,14 @@ if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg
 }
 // Check if $uploadOk is set to 0 by an error
 if ($uploadOk == 0) {
-    echo "Sorry, your file was not uploaded.";
+    echo " Sorry, your file was not uploaded.";
 // if everything is ok, try to upload file
 } else {
-    if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-        echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
+    $newfilename = "helloworld.jpg";
+    if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"],  $newfilename)) {
+        echo " The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
     } else {
-        echo "Sorry, there was an error uploading your file.";
+        echo " Sorry, there was an error uploading your file.";
     }
 }
 ?>
