@@ -1,4 +1,4 @@
-<!-- allows multiple file upload -->
+<!-- allows multiple file upload not currently being used-->
 <?php
 if(isset($_FILES['files'])){
     $errors= array();

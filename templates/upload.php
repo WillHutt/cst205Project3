@@ -1,4 +1,4 @@
-<!-- Allows only 1 image upload at a time. Might not be used -->
+<!-- Allows only 1 image upload at a time. Currently in use -->
 
 <?php
 $target_dir = "pictures/";
@@ -37,6 +37,7 @@ if ($uploadOk == 0) {
     echo " Sorry, your file was not uploaded.";
 // if everything is ok, try to upload file
 } else {
+    //changes file name
     $newfilename = $target_dir . "helloworld.jpg";
     if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"],  $newfilename)) {
         echo " The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
