@@ -1,7 +1,7 @@
 <!-- Allows only 1 image upload at a time. Currently in use -->
 
 <?php
-$target_dir = "pictures/";
+$target_dir = "static/pictures/";
 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 $uploadOk = 1;
 $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
