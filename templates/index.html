@@ -2,71 +2,72 @@
 <html>
 
 <head>
-<title>Picture to Text</title>
+    <title>Picture to Text</title>
 
-<!-- icon for site -->
-<link rel="icon" href="/static/favicon.ico">    
+    <!-- icon for site -->
+    <link rel="icon" href="../static/favicon.ico">
 
-<meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<!-- style sheet for navbar from w3schools -->
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <!-- style sheet for navbar from w3schools -->
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+    <!-- stylesheet -->
+    <link rel="stylesheet" href="../static/stylesman.css" type="text/css" media="screen">
+
+    <!-- nav bar -->
+    <div>
+        <nav>
+            <div class="w3-bar w3-brown">
+                <a href="https://cst205-proj3-swiftpaws.c9users.io/" class="w3-bar-item w3-button">Home</a>
+        </nav>
+        </div>
 
 
-<!-- nav bar -->
-<div>
-  <nav>
-    <div class="w3-bar w3-brown">
-    <a href="https://cst205-proj3-swiftpaws.c9users.io/templates/index.html" class="w3-bar-item w3-button">Home</a>
-  </nav> 
-</div>
-    
-
-<!-- stylesheet -->
-<link rel="stylesheet"  href="stylesman.css" type="text/css" media="screen">
 
 
 
 </head>
 
 <body>
- <h1><i>Picture to Text</h1></i>
+    <h1><i>Picture to Text</h1></i>
 
-<!-- box -->
-<div id ="container"
-div class = "div1"> <p>Need to add details/explanations.</p>
-<p>In order to upload you image simply click on the choose file button. 
-<br>Then choose the photo you want to upload and click on the upload button. 
-<br>Will include downloading/emailing instructions after they've been implemented.</p>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
-    
-<!-- upload/download/select buttons -->    
-    <form action="upload.php" method="post" enctype="multipart/form-data">
-    <input type="file" name="fileToUpload" id="fileToUpload">
-    <input type="submit" value="Upload" name="submit">
-    <input type="Button" Value="Download"
-        onclick="window.location.href='/text.txt'"
-    </form>
-    
-<!-- copyright logo for looks -->    
-<footer>Copyright &copy; Group 242</footer>
-
-</div>
+        <!-- box -->
+        <div id="container" div class="div1">
+            <p>Need to add details/explanations.</p>
+            <p>In order to upload you image simply click on the choose file button.
+                <br>Then choose the photo you want to upload and click on the upload button.
+                <br>Will include downloading/emailing instructions after they've been implemented.</p>
+            <br>
+            <br>
+            <br>
+            <br>{% if success %}
+            <div>{{success}}</div> {% endif %}
+            <br>
+            <br>   
+            <br>
+        
+            
+            <!-- upload/download/select buttons -->
+            <form method=post enctype=multipart/form-data>
+                <input type=file name=file>
+                <input type=submit value=Upload>
+                <button type="button"><a class="no_underline" href="../static/text.txt" download>Download</a>
+            </button>
+            </form>
 
 
-    
+
+            <!-- copyright logo for looks -->
+            <footer>Copyright &copy; Group 242</footer>
+
+        </div>
+
+
+
 
 </body>
 
-    
-    
-</html>
 
+
+</html>

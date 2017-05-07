@@ -2,6 +2,7 @@
 import pytesseract
 from PIL import Image
 from PIL import ImageEnhance
+import shutil
 
 import smtplib
 import getpass
@@ -12,20 +13,20 @@ from email import encoders
 
 #Image resizing based on percentage
 basewidth = 500
-image = Image.open('pictures/slide5.jpg')
+image = Image.open('static/pictures/slide5.jpg')
 width_percent = (basewidth/float(image.size[0]))
 height_size = int((float(image.size[1])*float(width_percent)))
 image = image.resize((basewidth,height_size), Image.ANTIALIAS)
-image.save('pictures/new2slide5.jpg')
+image.save('static/pictures/new2slide5.jpg')
 
 #greyscale
-img1 = Image.open('pictures/slide1.jpg').convert('L')
-img1.save('pictures/newslide1.jpg')
+img1 = Image.open('static/pictures/slide1.jpg').convert('L')
+img1.save('static/pictures/newslide1.jpg')
 
 #pictures
-on = Image.open("pictures/powerpoint-presentation-ma-thesis-defence-6-728.jpg")
-yo = Image.open("pictures/slide1.jpg")
-newyo = Image.open("pictures/newslide1.jpg")
+on = Image.open("static/pictures/powerpoint-presentation-ma-thesis-defence-6-728.jpg")
+yo = Image.open("static/pictures/slide1.jpg")
+newyo = Image.open("static/pictures/newslide1.jpg")
 # low = Image.open("slide5.jpg")
 # newlow = Image.open("newslide5.jpg")
 # new2low = Image.open("new2slide5.jpg")
@@ -35,11 +36,11 @@ newyo = Image.open("pictures/newslide1.jpg")
 #contrast
 const = ImageEnhance.Contrast(newyo)
 im = const.enhance(1.8)
-im.save('pictures/new2slide1.jpg')
+im.save('static/pictures/new2slide1.jpg')
 
 #pictures after contrast
-new4low = Image.open("pictures/new4slide5.jpg")
-new2yo = Image.open("pictures/new2slide1.jpg")
+new4low = Image.open("static/pictures/new4slide5.jpg")
+new2yo = Image.open("static/pictures/new2slide1.jpg")
 
 #tests for printing to see accuracy
 # print(image_to_string(newyo))
@@ -54,6 +55,8 @@ f.write(pytesseract.image_to_string(on))
 f.write(" ")
 f.write(pytesseract.image_to_string(new2yo))
 f.close()
+
+shutil.move("text.txt", "static/text.txt")
 
 
 #email
@@ -71,7 +74,7 @@ body = "Here is your text."
 msg.attach(MIMEText(body, 'plain'))
  
 filename = "text.txt"
-attachment = open("text.txt", "rb")
+attachment = open("static/text.txt", "rb")
  
 part = MIMEBase('application', 'octet-stream')
 part.set_payload((attachment).read())
