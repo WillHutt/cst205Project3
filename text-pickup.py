@@ -11,13 +11,6 @@ from email.MIMEText import MIMEText
 from email.MIMEBase import MIMEBase
 from email import encoders
 
-#Image resizing based on percentage
-# basewidth = 500
-# image = Image.open('static/pictures/user_upload.jpg')
-# width_percent = (basewidth/float(image.size[0]))
-# height_size = int((float(image.size[1])*float(width_percent)))
-# image = image.resize((basewidth,height_size), Image.ANTIALIAS)
-# image.save('static/pictures/user_upload.jpg')
 
 #greyscale
 img1 = Image.open('static/pictures/user_upload.jpg').convert('L')
@@ -27,10 +20,6 @@ img1.save('static/pictures/user_upload.jpg')
 on = Image.open("static/pictures/user_upload.jpg")
 
 
-#contrast
-#const = ImageEnhance.Contrast(on)
-#im = const.enhance(1.8)
-#im.save('static/pictures/user_upload.jpg')
 
 #pictures after contrast
 new4low = Image.open("static/pictures/new4slide5.jpg")
