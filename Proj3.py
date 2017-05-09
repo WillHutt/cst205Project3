@@ -1,54 +1,38 @@
-import os
-from flask import Flask, flash, request, redirect, url_for
-from werkzeug.utils import secure_filename
-from flask import send_from_directory
+from pytesseract import image_to_string
+from PIL import Image
+from PIL import ImageEnhance
 
+#Image resizing based on percentage         `##Check to see which filters work best
+basewidth = 500
+image = Image.open('user_image.jpg')         ##Use original image                 
+width_percent = (basewidth/float(image.size[0]))
+height_size = int((float(image.size[1])*float(width_percent)))
+image = image.resize((basewidth,height_size), Image.ANTIALIAS)
+image.save('newSlide_1.jpg')                 ##Resized image
 
-UPLOAD_FOLDER = '/path/to/the/uploads'
-ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
+#greyscale                                  ##Check to see which filters work best
+img1 = Image.open('user_image.jpg').convert('L')      ##Use original image
+img1.save('newSlide_1_grey.jpg')                  ##Only greyscale
+img2 = Image.open('newSlide_1.jpg').convert('L')      ##Use resized image
+img2.save('newSlide_1_re_grey.jpg')               ##Greyscale and resize
 
-app = Flask(__name__)
-app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+#contrast                                   ##Check to see which filters work best
+contr = ImageEnhance.Contrast('user_image.jpg')       ##Use original image
+im = contr.enhance(1.8)
+im.save('newslide_1_contr.jpg')               ##Only contrast
+contr2 = ImageEnhance.Contrast('newSlide_1.jpg')         ##Use resized image
+im2 = contr2.enhance(1.8)
+im2.save('newSlide_1_re_contr.jpg')           ##Resize and contrast
+contr3 = ImageEnhance.Contrast('newSlide_1_grey.jpg')    ##Use greyscale image
+im3 = contr3.enhance(1.8)
+im3.save('newSlide_1_grey_contr.jpg')         ##Greyscale and contrast
+contr4 = ImageEnhance.Contrast('newSlide_1_re_grey.jpg') ##Use resized greyscale image
+im4 = contr4.enhance(1.8)
+im4.save('newSlide_1_re_grey_contr.jpg')      ##Resize, greyscale, contrast
 
-
-def allowed_file(filename):
-    return '.' in filename and \
-           filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
-
-@app.route('/', methods=['GET', 'POST'])
-def upload_file():
-    if request.method == 'POST':
-        # check if the post request has the file part
-        if 'file' not in request.files:
-            flash('No file part')
-            return redirect(request.url)
-        file = request.files['file']
-        # if user does not select file, browser also
-        # submit a empty part without filename
-        if file.filename == '':
-            flash('No selected file')
-            return redirect(request.url)
-        if file and allowed_file(file.filename):
-            filename = secure_filename(file.filename)
-            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-            return redirect(url_for('uploaded_file',
-                                    filename=filename))
-    return '''
-    <!doctype html>
-    <title>Upload new File</title>
-    <h1>Upload new File</h1>
-    <form method=post enctype=multipart/form-data>
-      <p><input type=file name=file>
-         <input type=submit value=Upload>
-    </form>
-    '''
-    
-@app.route('/uploads/<filename>')
-def uploaded_file(filename):
-    return send_from_directory(app.config['UPLOAD_FOLDER'],
-                               filename)
-                               
-app.run(
-    port=int(os.getenv('PORT', 8080)),
-    host=os.getenv('IP', '0.0.0.0')
-)
+#read to file
+f = open("text.txt","w")
+f.write(image_to_string(image))
+f.write(" ")
+f.write(image_to_string(img1))
+f.close()
