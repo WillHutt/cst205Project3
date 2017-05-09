@@ -12,48 +12,36 @@ from email.MIMEBase import MIMEBase
 from email import encoders
 
 #Image resizing based on percentage
-basewidth = 500
-image = Image.open('static/pictures/slide5.jpg')
-width_percent = (basewidth/float(image.size[0]))
-height_size = int((float(image.size[1])*float(width_percent)))
-image = image.resize((basewidth,height_size), Image.ANTIALIAS)
-image.save('static/pictures/new2slide5.jpg')
+# basewidth = 500
+# image = Image.open('static/pictures/user_upload.jpg')
+# width_percent = (basewidth/float(image.size[0]))
+# height_size = int((float(image.size[1])*float(width_percent)))
+# image = image.resize((basewidth,height_size), Image.ANTIALIAS)
+# image.save('static/pictures/user_upload.jpg')
 
 #greyscale
-img1 = Image.open('static/pictures/slide1.jpg').convert('L')
-img1.save('static/pictures/newslide1.jpg')
+img1 = Image.open('static/pictures/user_upload.jpg').convert('L')
+img1.save('static/pictures/user_upload.jpg')
 
 #pictures
-on = Image.open("static/pictures/powerpoint-presentation-ma-thesis-defence-6-728.jpg")
-yo = Image.open("static/pictures/slide1.jpg")
-newyo = Image.open("static/pictures/newslide1.jpg")
-# low = Image.open("slide5.jpg")
-# newlow = Image.open("newslide5.jpg")
-# new2low = Image.open("new2slide5.jpg")
-# new3low = Image.open("new3slide5.jpg")
+on = Image.open("static/pictures/user_upload.jpg")
 
 
 #contrast
-const = ImageEnhance.Contrast(newyo)
-im = const.enhance(1.8)
-im.save('static/pictures/new2slide1.jpg')
+#const = ImageEnhance.Contrast(on)
+#im = const.enhance(1.8)
+#im.save('static/pictures/user_upload.jpg')
 
 #pictures after contrast
 new4low = Image.open("static/pictures/new4slide5.jpg")
 new2yo = Image.open("static/pictures/new2slide1.jpg")
 
-#tests for printing to see accuracy
-# print(image_to_string(newyo))
-# print " "
-# print(image_to_string(new2yo))
-# print " "
-# print(image_to_string(on))
 
 #read to file
 f = open("text.txt","w")
 f.write(pytesseract.image_to_string(on))
 f.write(" ")
-f.write(pytesseract.image_to_string(new2yo))
+f.write(pytesseract.image_to_string(on))
 f.close()
 
 shutil.move("text.txt", "static/text.txt")
