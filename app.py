@@ -3,6 +3,7 @@ import os
 from flask import request, redirect, url_for
 from werkzeug.utils import secure_filename
 from flask import send_from_directory
+import text_pickup
 
 UPLOAD_FOLDER = 'static/pictures' #location that the desired photo will be saved
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg']) #only these formats will be allowed to upload
@@ -34,9 +35,13 @@ def index():
             filename = "user_upload.jpg"
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
             success = "Uploaded!"
+            text_pickup.grab_text()
             return flask.render_template("index.html", success=success)
+            
     return flask.render_template("index.html")
-
+    
+    
+    
 app.run(
     host = os.getenv('IP', '0.0.0.0'),
     port = int(os.getenv('PORT', 8080))
