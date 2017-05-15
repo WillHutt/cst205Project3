@@ -1,0 +1,72 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>Picture to Text</title>
+
+    <!-- icon for site -->
+    <link rel="icon" href="../static/favicon.ico">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- style sheet for navbar from w3schools -->
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+    <!-- stylesheet -->
+    <link rel="stylesheet" href="../static/stylesman.css" type="text/css" media="screen">
+
+    <!-- nav bar -->
+    <div>
+        <nav>
+            <div class="w3-bar w3-brown">
+                <a href="https://cst205-proj3-swiftpaws.c9users.io/" class="w3-bar-item w3-button">Home</a>
+        </nav>
+        </div>
+
+
+
+
+
+</head>
+
+<body>
+    <h1><i>Picture to Text</h1></i>
+
+        <!-- box -->
+        <div id="container" div class="div1">
+            <p>In order to upload you image simply click on the choose file button.
+                <br>Then choose the photo you want to upload and click on the upload button.
+                <br>To download the text that was converted from the photo simply click on the 
+               <br> download button. Will include email isntructions once/if that is finished.</p>
+            <br>
+            <br>
+            <br>{% if success %}
+            <div>{{success}}</div> {% endif %}
+            <br>
+            <br>   
+            <br>
+        
+            
+            <!-- upload/download/select buttons -->
+            <form method=post enctype=multipart/form-data>
+                <input type=file name=file>
+                <input type=submit value=Upload>
+                <button type="button"><a class="no_underline" href="../static/text.txt" download>Download</a>
+            </button>
+            </form>
+
+
+
+            <!-- copyright logo for looks -->
+            <footer>Copyright &copy; Group 242</footer>
+
+        </div>
+
+
+
+
+</body>
+
+
+
+</html>

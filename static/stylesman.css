@@ -1,0 +1,28 @@
+/*used for body */
+body
+      {
+        text-align: center;
+        background-color: #e7d59a;
+        font-family: Helvetica;
+        font-size: 18;
+      }
+
+
+/*used for box*/
+#container {
+width: 700px; /* Default; change to your desired width. */
+margin: 0px auto; /*0px top margin, automatic right margin, 0px bottom margin, automatic left margin. */
+left: 27%;
+
+}
+.div1 {
+    background-color: white;
+    width: 600px;
+    height: 400px;    
+    padding: 20px;
+    border: 4px solid black;
+}
+
+.no_underline{
+    text-decoration: none;
+}
