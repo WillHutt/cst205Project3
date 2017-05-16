@@ -1,4 +1,18 @@
-Programming languages/libraries used:
+https://github.com/IceCube1333/cst205Project3
+
+Picture to Text
+
+William Hutt
+Matt Guyadeen
+Gildardo 
+
+CST205
+5/16/17
+
+Program is run through app.py
+
+
+ languages/libraries used:
 
 PIL, tesseract, Flask, HTML, CSS, and Python
 
